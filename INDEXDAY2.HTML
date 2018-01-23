@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<!--
+Konner Schieman's Code changed to have dropdown menu of four locations and changed zoom for each location to where the futher you do down the dropmenu the more zoomed it is.
+-->
+<html>
+<body>
+
+<h1>My Second Google Map</h1>
+
+<select onchange="getMap(this.value)">
+  <option value="milan">Milan</option>
+  <option value="munich">Munich</option>
+  <option value="london">London</option>
+  <option value="paris">Paris</option>
+</select>
+
+<div id="map" style="width:1350px;height:800px;"></div>
+
+<script>
+function myMap(lat,long, zoomval) {
+  if(lat== null){
+    zoomval = 6
+    lat = 45.46888
+    long = 9.18109
+  }
+  var mapCanvas = document.getElementById("map");
+  var mapOptions = {
+    center: new google.maps.LatLng(lat, long), zoom: zoomval
+  };
+  var map = new google.maps.Map(mapCanvas, mapOptions);
+}
+function getMap(place) {
+  if(place == "milan"){
+  myMap(45.46888,9.18109, 6);
+}
+  if(place == "munich"){
+  myMap(48.13641, 11.57754,8)
+}
+  if(place == "london"){
+  myMap(51.5072,-0.1275,10)
+}
+  if(place == "paris"){
+  myMap(48.86319, 2.339754,12)
+}
+}
+</script>
+
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAnTPRPrXZDqhGwUfxUjCh_22ThW1fLPDQ&callback=myMap"></script>
+<!--
+To use this code on your website, get a free API key from Google.
+Read more at: https://www.w3schools.com/graphics/google_maps_basic.asp
+-->
+
+</body>
+</html>
